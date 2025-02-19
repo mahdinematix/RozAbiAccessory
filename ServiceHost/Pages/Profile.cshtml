@@ -1,0 +1,105 @@
+﻿@page
+@model ServiceHost.Pages.ProfileModel
+@{
+    Layout = "Shared/_Layout";
+    ViewData["title"] = "ویرایش  پروفایل";
+}
+
+<style>
+/* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+
+<div class="row text-center">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">ویرایش اطلاعات</h3>
+                <p>تاریخ ثبت نام : @Model.Command.RegisterDate</p>
+                @if (Model.Message != null)
+                {
+                    <div class="alert alert-primary">@Model.Message</div>
+                }
+            </div>
+            <div class="panel-body profile-form">
+                
+                <form method="post"
+                      enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Command.Fullname" class="control-label">نام</label>
+                                <input type="text" class="form-control" asp-for="Command.Fullname">
+                                <span asp-validation-for="Command.Fullname" class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label asp-for="Command.Username" class="control-label">نام کاربری</label>
+                                    <input type="text" class="form-control" asp-for="Command.Username">
+                                    <span asp-validation-for="Command.Username" class="error"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Command.ProfilePhoto" class="control-label">عکس پروفایل</label>
+                                <input type="file" class="form-control" data-val="false" asp-for="Command.ProfilePhoto" accept="image/*">
+                                <span asp-validation-for="Command.ProfilePhoto" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Command.Mobile" class="control-label">موبایل</label>
+                                <input type="text" class="form-control" asp-for="Command.Mobile">
+                                <span asp-validation-for="Command.Mobile" class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Command.Email" class="control-label">ایمیل</label>
+                                <input type="text" class="form-control" asp-for="Command.Email">
+                                <span asp-validation-for="Command.Email" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Command.Address" class="control-label">آدرس</label>
+                                <textarea type="text" rows="3" class="form-control" data-val="false" asp-for="Command.Address"></textarea>
+                                <span asp-validation-for="Command.Address" class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Command.Zipcode" class="control-label">کد پستی</label>
+                                <input type="number" class="form-control" data-val="false" asp-for="Command.Zipcode">
+                                <span asp-validation-for="Command.Zipcode" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id"/>
+                    <input type="hidden" name="accountId" value="@Model.Command.Id"/>
+                    <input type="submit" class="btn btn-success" value="ذخیره اطلاعات"/>
+                    <a asp-page="/Index" class="btn btn-danger">بازگشت</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

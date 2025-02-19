@@ -1,0 +1,127 @@
+﻿@page
+@model ServiceHost.Pages.AccountModel
+@{
+    ViewData["Title"] = "ورود و ثبت نام";
+}
+
+
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title">ورود - ثبت نام</h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li><a asp-page="/Index">صفحه اصلی</a></li>
+                            <li class="active">ورود - ثبت نام</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                                @if (Model.LoginMessage != null)
+                                {
+                                    <div class="alert alert-danger">@Model.LoginMessage</div>
+                                }
+                                <form method="post" asp-page-handler="Login">
+                                    <div class="login-form">
+                                        <h4 class="login-title">ورود</h4>
+                                        <div class="row">
+                                            <div class="col-md-12 col-12">
+                                                <label>نام کاربری</label>
+                                                <input type="text" name="username" placeholder="نام کاربری">
+                                            </div>
+                                            <div class="col-12">
+                                                <label>کلمه عبور</label>
+                                                <input type="password" name="password" placeholder="کلمه عبور">
+                                                
+                                            </div>
+
+                                            <div class="col-sm-6 text-left text-sm-right">
+                                                <p class="forget-pass-link"> درصورت فراموشی نام کاربری یا کلمه عبور به پشتیبانی سایت پیام دهید.</p>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <button class="register-button">ورود</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                                @if (Model.RegisterMessage != null)
+                                {
+                                    <div class="alert alert-danger">@Model.RegisterMessage</div>
+                                }
+                                <form method="post" asp-page-handler="Create">
+
+                                    <div class="login-form">
+                                        <h4 class="login-title">ثبت نام</h4>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>نام کامل <span class="red-star">*</span></label>
+                                                <input type="text" name="fullname" placeholder="نام کامل">
+                                            </div>
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>نام کاربری <span class="red-star">*</span></label>
+                                                <input type="text" name="username" placeholder="نام کاربری">
+                                            </div>
+                                            <div class="col-md-12 mb-20">
+                                                <label>موبایل <span class="red-star">*</span></label>
+                                                <input type="text" name="mobile" placeholder="موبایل">
+                                            </div>
+                                            <div class="col-md-12 mb-20">
+                                                <label>ایمیل <span class="red-star">*</span></label>
+                                                <input type="email" name="email" placeholder="ایمیل">
+                                            </div>
+                                            <div class="col-md-12 mb-20">
+                                                <label>عکس پروفایل</label>
+                                                <input type="file" name="profilePhoto" accept="image/*">
+                                            </div>
+                                            <div class="col-md-6 mb-20">
+                                                <label>کلمه عبور <span class="red-star">*</span></label>
+                                                <input type="password" name="password" placeholder="کلمه عبور">
+                                            </div>
+                                            <div class="col-md-6 mb-20">
+                                                <label>تکرار کلمه عبور <span class="red-star">*</span></label>
+                                                <input type="password" name="rePassword" placeholder="تکرار کلمه عبور">
+                                            </div>
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>آدرس</label>
+                                                <textarea rows="3" name="address" placeholder="آدرس"></textarea>
+                                            </div>
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>کد پستی</label>
+                                                <input type="text" name="zipcode" placeholder="کد پستی">
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="register-button mt-0">ثبت نام</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
